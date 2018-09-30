@@ -1,9 +1,9 @@
-from django.conf.urls.defaults import *
+from django.conf.urls import url, include
 
 from wallet import views
 
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(
         r'^deposit/(?P<option_id>\d+)/return/(?P<invoice_id>\d+)/$',
         views.deposit_return,
@@ -17,4 +17,4 @@ urlpatterns = patterns('',
     url(
         r'^report/$', views.wallet_report, name='wallet_report',
     ),
-)
+]

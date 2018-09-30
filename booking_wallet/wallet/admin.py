@@ -11,7 +11,7 @@ class WalletAdmin(admin.ModelAdmin):
         'wallet__user__username',
         'wallet__user__email',
     )
-admin.site.register(wallet.Wallet, WalletAdmin)
+admin.site.register(wallet.Wallet)
 
 
 class TransactionAdmin(admin.ModelAdmin):
@@ -26,7 +26,7 @@ class TransactionAdmin(admin.ModelAdmin):
     )
     ordering = ('-date',)
     date_hierarchy = 'date'
-admin.site.register(wallet.Transaction, TransactionAdmin)
+admin.site.register(wallet.Transaction)
 
 
 class PaymentOptionAdmin(admin.ModelAdmin):
@@ -48,4 +48,4 @@ class InvoiceAdmin(admin.ModelAdmin):
         'user__email',
     )
     raw_id_fields = ('transaction',)
-admin.site.register(wallet.Invoice, InvoiceAdmin)
+admin.site.register(wallet.Invoice)

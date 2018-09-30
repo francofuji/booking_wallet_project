@@ -23,7 +23,7 @@ logger.addHandler(handler)
 
 
 class Wallet(models.Model):
-    user = models.ForeignKey(User, unique=True, related_name='wallets')
+    user = models.OneToOneField(User, related_name='wallets')
     
     class Meta:
         permissions = (('can_view_wallet_report', 'Can view wallet report'),)
@@ -89,10 +89,9 @@ class Invoice(models.Model):
     user = models.ForeignKey(User, related_name='wallet_invoices')
     option = models.ForeignKey(PaymentOption, related_name='invoices')
     date_billed = models.DateTimeField()
-    transaction = models.ForeignKey(
+    transaction = models.OneToOneField(
         Transaction,
         related_name='invoices',
         null=True,
-        blank=True,
-        unique=True,
+        blank=True
     )
